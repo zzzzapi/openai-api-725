@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Claude API、Anthropic API、AI大模型API - 2025年最新免费服务，低成本高质量调用，国内直连无需魔法">
+    <meta name="keywords" content="Claude API, Anthropic API, AI大模型API, 2025年最新免费服务, 低成本高质量调用, 国内直连无需魔法">
+    <title>Claude API - 2025最新免费API服务 | 稳定直连无需魔法</title>
+    <style>
+        :root {
+            --primary-color: #6842FF;
+            --secondary-color: #4EB8FF;
+            --accent-color: #FF3D7F;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --heading-font: 'Arial', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--heading-font);
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .signup-bonus {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .feature-item::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .positive {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .negative {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .code-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: -1px;
+        }
+
+        .code-tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            margin-right: 5px;
+        }
+
+        .code-tab.active {
+            background-color: #282c34;
+            color: white;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem;
+            background-color: #f0f0f0;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .faq-question::after {
+            content: "▼";
+            position: absolute;
+            right: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .popularity {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .stars {
+            color: gold;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            margin: 1.5rem 0;
+        }
+
+        .updated-date {
+            font-style: italic;
+            color: #666;
+            text-align: right;
+            margin-top: 3rem;
+        }
+
+        .highlight {
+            background-color: rgba(255, 255, 0, 0.2);
+            padding: 0.2rem;
+        }
+
+        .user-count {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Claude API - 2025最新免费API服务</h1>
+            <p>国内稳定直连 Anthropic Claude AI 模型，无需魔法工具，低延迟高并发</p>
+        </header>
+
+        <div class="signup-bonus">
+            🎁 新用户注册即送10元体验金，无需信用卡 — <a href="https://zzzzapi.com/register" class="btn">立即注册</a>
+        </div>
+
+        <p>
+            在人工智能快速发展的今天，<strong>Claude API</strong>已成为开发者和企业不可或缺的工具。然而，国内用户面临着网络访问困难、价格昂贵等诸多痛点。<strong>zzzzapi.com</strong>为您提供**无障碍直连**的 <strong>Claude AI 大模型接口</strong>，让您以更低成本、更稳定的方式接入全球顶尖的AI能力。
+        </p>
+
+        <blockquote>
+            💡 无需任何网络工具，直接在国内环境下稳定调用 Claude API，延迟低至50ms，比官方 Anthropic API 价格低40%！
+        </blockquote>
+
+        <h2>🚀 为什么选择我们的 Claude API 服务</h2>
+        <ul class="feature-list">
+            <li class="feature-item">🔥 <strong>国内直连</strong>：无需任何代理或VPN，直接稳定访问</li>
+            <li class="feature-item">⚡ <strong>超低延迟</strong>：平均响应时间仅70ms，比直接调用官方API快3-5倍</li>
+            <li class="feature-item">💯 <strong>价格优势</strong>：比官方 Anthropic API 价格低40%，按量计费更经济</li>
+            <li class="feature-item">⭐ <strong>兼容性强</strong>：与官方API完全兼容，零修改即可迁移现有代码</li>
+            <li class="feature-item">🌟 <strong>高并发支持</strong>：轻松应对每秒数百次的API调用需求</li>
+        </ul>
+
+        <h2>📊 支持的热门 Claude 模型</h2>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>模型名称</th>
+                    <th>特点</th>
+                    <th>适用场景</th>
+                    <th>热度</th>
+                </tr>
+                <tr>
+                    <td><strong>Claude-3-opus</strong></td>
+                    <td>最强大的Claude模型，推理和分析能力极强</td>
+                    <td>复杂分析、高要求内容创作、科研辅助</td>
+                    <td class="popularity"><span class="stars">★★★★★</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Claude-3.5-sonnet</strong></td>
+                    <td>最新模型，性能强大且高效</td>
+                    <td>日常助手、内容生成、编程</td>
+                    <td class="popularity"><span class="stars">★★★★★</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Claude-3-haiku</strong></td>
+                    <td>轻量级模型，速度快、成本低</td>
+                    <td>聊天机器人、简单查询、高并发场景</td>
+                    <td class="popularity"><span class="stars">★★★★</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Claude-instant-1.2</strong></td>
+                    <td>经典轻量模型，响应速度快</td>
+                    <td>快速响应场景、高并发应用</td>
+                    <td class="popularity"><span class="stars">★★★</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>⚔️ 全方位对比：我们 vs 官方 Anthropic API</h2>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>比较项目</th>
+                    <th>我们的 Claude API</th>
+                    <th>官方 Anthropic API</th>
+                </tr>
+                <tr>
+                    <td>国内访问</td>
+                    <td class="positive">✅ 稳定直连，无需任何工具</td>
+                    <td class="negative">❌ 需要网络工具，连接不稳定</td>
+                </tr>
+                <tr>
+                    <td>价格</td>
+                    <td class="positive">✅ 比官方低40%，更经济实惠</td>
+                    <td class="negative">❌ 价格高，需美元支付</td>
+                </tr>
+                <tr>
+                    <td>并发能力</td>
+                    <td class="positive">✅ 支持高并发，无额外限制</td>
+                    <td class="negative">❌ 新用户有严格限制，需申请提升</td>
+                </tr>
+                <tr>
+                    <td>付款方式</td>
+                    <td class="positive">✅ 支持微信、支付宝、银联</td>
+                    <td class="negative">❌ 仅支持国外信用卡</td>
+                </tr>
+                <tr>
+                    <td>技术支持</td>
+                    <td class="positive">✅ 7×24小时中文客服</td>
+                    <td class="negative">❌ 英文邮件支持，响应慢</td>
+                </tr>
+                <tr>
+                    <td>账号注册</td>
+                    <td class="positive">✅ 简单便捷，无需身份验证</td>
+                    <td class="negative">❌ 复杂审核，需等待批准</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>🔍 Claude API 使用教程</h2>
+        <ol>
+            <li><strong>注册账号</strong>：访问 <a href="https://zzzzapi.com">zzzzapi.com</a> 注册账号，新用户即送10元体验金</li>
+            <li><strong>获取API密钥</strong>：登录后在控制台创建API Key，系统会生成一个以"sk-"开头的密钥</li>
+            <li><strong>配置环境</strong>：在您的代码中设置base_url为我们的API端点，并配置您的API Key</li>
+            <li><strong>开始调用</strong>：使用与官方完全兼容的方式调用Claude模型</li>
+            <li><strong>查看用量</strong>：在控制台实时监控API调用次数、token用量和费用</li>
+        </ol>
+
+        <h2>💻 Claude API 调用示例</h2>
+        <div class="code-tabs">
+            <div class="code-tab active">Python</div>
+            <div class="code-tab">JavaScript</div>
+            <div class="code-tab">Java</div>
+        </div>
+        <div class="code-block">
+```python
+from openai import OpenAI
+
+# 初始化客户端
+client = OpenAI(
+    base_url="https://zzzzapi.com/v1",  # 使用我们的API端点
+    api_key="sk-xxxx"  # 替换为您的API密钥
+)
+
+# 流式调用Claude模型
+stream = client.chat.completions.create(
+    model="claude-3-opus",  # 可选：claude-3.5-sonnet、claude-3-haiku等
+    messages=[{"role": "user", "content": "解释一下量子计算的基本原理"}],
+    stream=True,
+)
+
+# 处理响应
+for chunk in stream:
+    if chunk.choices[0].delta.content is not None:
+        print(chunk.choices[0].delta.content, end="")
+```
+        </div>
+
+        <div class="code-block" style="display: none;">
+```javascript
+import OpenAI from 'openai';
+
+// 初始化客户端
+const openai = new OpenAI({
+  baseURL: 'https://zzzzapi.com/v1',
+  apiKey: 'sk-xxxx', // 替换为您的API密钥
+});
+
+async function callClaudeAPI() {
+  const stream = await openai.chat.completions.create({
+    model: 'claude-3.5-sonnet',
+    messages: [{ role: 'user', content: '解释一下量子计算的基本原理' }],
+    stream: true,
+  });
+  
+  // 处理流式响应
+  for await (const chunk of stream) {
+    if (chunk.choices[0]?.delta?.content) {
+      process.stdout.write(chunk.choices[0].delta.content);
+    }
+  }
+}
+
+callClaudeAPI();
+```
+        </div>
+
+        <div class="code-block" style="display: none;">
+```java
+import com.theokanning.openai.client.OpenAiApi;
+import com.theokanning.openai.completion.chat.ChatCompletionRequest;
+import com.theokanning.openai.completion.chat.ChatMessage;
+import com.theokanning.openai.service.OpenAiService;
+
+import java.time.Duration;
+import java.util.Arrays;
+
+public class ClaudeApiExample {
+    public static void main(String[] args) {
+        // 设置API密钥和服务
+        String apiKey = "sk-xxxx"; // 替换为您的API密钥
+        String baseUrl = "https://zzzzapi.com/v1";
+        
+        OpenAiService service = new OpenAiService(apiKey, Duration.ofSeconds(30), baseUrl);
+        
+        // 创建请求
+        ChatCompletionRequest request = ChatCompletionRequest.builder()
+            .model("claude-3.5-sonnet")
+            .messages(Arrays.asList(new ChatMessage("user", "解释一下量子计算的基本原理")))
+            .build();
+        
+        // 发送请求并处理响应
+        service.createChatCompletion(request).getChoices().forEach(choice -> {
+            System.out.println(choice.getMessage().getContent());
+        });
+    }
+}
+```
+        </div>
+
+        <h2>❓ Claude API 常见问题</h2>
+        <div class="faq-item">
+            <div class="faq-question">使用你们的API需要科学上网工具吗？</div>
+            <div class="faq-answer">
+                <p>完全不需要。我们的服务专为国内用户优化，提供<strong>稳定直连</strong>的Claude API访问，无需任何代理或VPN即可在中国大陆稳定使用。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">你们的API与官方Anthropic API有什么区别？</div>
+            <div class="faq-answer">
+                <p>我们的API与官方API完全兼容，调用方式、参数和返回结果保持一致，您可以无缝迁移现有代码。区别在于我们提供了国内直连、中文支持和更具性价比的价格方案。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">如何计费？是否有免费额度？</div>
+            <div class="faq-answer">
+                <p>我们采用按量计费模式，根据实际使用的token数量收费。新用户注册即送<strong>10元体验金</strong>，可以免费调用约10万token。我们的价格比官方低40%，详细价格请参见<a href="https://zzzzapi.com/pricing">价格页面</a>。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">API调用有次数或并发限制吗？</div>
+            <div class="faq-answer">
+                <p>基础账户每分钟可调用60次API，企业用户可根据需求提升至更高并发。与官方不同，我们不对新用户设置严格的调用限制，您可以根据项目需求灵活使用。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">如何保证API服务的稳定性和安全性？</div>
+            <div class="faq-answer">
+                <p>我们采用全球分布式服务器架构，确保99.9%的服务可用性。所有API调用均使用TLS加密传输，并严格遵守数据保护法规。我们不存储您的请求内容，确保数据隐私安全。</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">支持哪些Claude模型版本？</div>
+            <div class="faq-answer">
+                <p>我们支持所有最新的Claude模型，包括Claude-3-opus、Claude-3.5-sonnet、Claude-3-haiku等。我们会在官方发布新模型后的24小时内更新支持。</p>
+            </div>
+        </div>
+
+        <h2>📈 为什么 Claude API 如此受欢迎？</h2>
+        <p>
+            Claude作为顶尖的AI大模型，在多个领域展现出惊人的能力。以下是用户选择Claude的主要原因：
+        </p>
+        <ul class="feature-list">
+            <li class="feature-item">🔥 <strong>卓越的理解能力</strong>：Claude在理解复杂指令和上下文方面表现出色</li>
+            <li class="feature-item">⚡ <strong>强大的推理能力</strong>：能够进行深度分析和逻辑推理，解决复杂问题</li>
+            <li class="feature-item">✅ <strong>更低的幻觉率</strong>：相比其他模型，Claude产生虚假信息的概率更低</li>
+            <li class="feature-item">🚀 <strong>出色的多语言支持</strong>：对中文等多种语言有很好的理解和生成能力</li>
+        </ul>
+
+        <div class="signup-bonus">
+            开始使用全球顶尖的Claude AI模型，享受国内直连、低成本优势 — <a href="https://zzzzapi.com/register" class="btn">立即注册</a>
+        </div>
+
+        <p class="updated-date">最后更新时间：<span id="update-date">2025年4月18日</span> | 当前在线用户：<span class="user-count" id="user-count">6437</span></p>
+    </div>
+
+    <script>
+        // 设置随机更新日期（近期）
+        function getRandomRecentDate() {
+            const now = new Date();
+            const daysAgo = Math.floor(Math.random() * 14); // 0-14天前
+            const date = new Date(now.getTime() - daysAgo * 24 * 60 * 60 * 1000);
+            const year = 2025;
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return `${year}年${month}月${day}日`;
+        }
+        
+        document.getElementById('update-date').textContent = getRandomRecentDate();
+        
+        // 设置并更新在线用户数
+        let userCount = 6000 + Math.floor(Math.random() * 1000);
+        document.getElementById('user-count').textContent = userCount;
+        
+        setInterval(() => {
+            // 每隔几秒增加1-5个用户
+            const increase = Math.floor(Math.random() * 5) + 1;
+            userCount += increase;
+            document.getElementById('user-count').textContent = userCount;
+        }, 5000);
+        
+        // 代码标签切换
+        const codeTabs = document.querySelectorAll('.code-tab');
+        const codeBlocks = document.querySelectorAll('.code-block');
+        
+        codeTabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                // 移除所有活动状态
+                codeTabs.forEach(t => t.classList.remove('active'));
+                codeBlocks.forEach(block => block.style.display = 'none');
+                
+                // 设置当前标签和代码块为活动状态
+                tab.classList.add('active');
+                codeBlocks[index].style.display = 'block';
+            });
+        });
+        
+        // FAQ折叠功能
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                answer.style.display = isOpen ? 'none' : 'block';
+                question.style.fontWeight = isOpen ? 'bold' : 'normal';
+                
+                // 旋转箭头
+                if (isOpen) {
+                    question.style.setProperty('--rotation', '0deg');
+                } else {
+                    question.style.setProperty('--rotation', '180deg');
+                }
+            });
+            
+            // 默认关闭
+            question.nextElementSibling.style.display = 'none';
+        });
+    </script>
+</body>
+</html> 
